@@ -1,0 +1,44 @@
+/**
+ * Basic typography style for copy text
+ */
+body {
+  color: $text-color;
+  font: normal 125% / 1.4 $text-font-stack;
+}
+
+p, h1, h2, h3, h4, h5, a, li {
+  margin: 0;
+}
+
+.title {
+  color: $white;
+  text-align: center;
+  font-family: "Lora";
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 90%;
+  letter-spacing: -1.44px;
+}
+
+.big-title {
+  color: $white;
+  text-align: center;
+  font-family: "Lora";
+  font-size: 52px; 
+  font-style: normal;
+  font-weight: 600;
+  line-height: 90%;
+  letter-spacing: -1.44px;
+}
+
+.text {
+  color: $white;
+  text-align: center;
+  font-family: "Lato";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  letter-spacing: -0.083px;
+}

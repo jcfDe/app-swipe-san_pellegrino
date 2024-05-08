@@ -1,0 +1,33 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+.input {
+    display: flex;
+    width: 100%;
+    padding: 14.912px 37.561px;
+    align-items: center;
+    gap: 14.085px;
+    flex-shrink: 0;
+    border-radius: 35.213px;
+    background: #F8F6F4;
+    outline: none;
+    border: none;
+    color: #131E2E;
+    text-align: left;
+    font-family: "Lato";
+    font-size: 16px;
+
+    &::placeholder {
+        color: #131E2E;
+        opacity: 0.7;
+        text-align: left;
+        font-family: "Lato";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 100%;
+    }
+    &.danger{
+        border: 1px solid $red;
+    }
+}

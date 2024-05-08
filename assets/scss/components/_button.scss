@@ -1,0 +1,110 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    font-family: 'Raleway';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%;
+    letter-spacing: -0.147px;
+    text-transform: uppercase;
+
+    border-radius: 44px;
+    padding: 12px;
+    width: 100%;
+
+    &--not,
+    &--yes,
+    &--modal_finish,
+    &--continue {
+        border-radius: 47.572px;
+        display: flex;
+        width: 49%;
+        height: 41px;
+        padding: 5.743px 8.354px;
+        justify-content: center;
+        align-items: center;
+        gap: 4.709px;
+        flex-shrink: 0;
+        text-align: center;
+        font-family: "Lato";
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+
+        &:before{
+            display: block;
+            width: 15px;
+            height: 15px;
+        }
+
+        /* 16.1px */
+    }
+
+    &--not {
+        color: $red;
+        border: 1.197px solid $red;
+
+        &:before {
+            content: var(--svg-x-red);
+        }
+    }
+
+    &--yes {
+        color: $button-blue;
+        border: 1.197px solid $button-blue;
+
+        &:before {
+            content: var(--svg-heart-blue);
+        }
+    }
+
+    &--modal_finish {
+        color: $white;
+        border: 1.197px solid $white;
+        background: rgba(255, 255, 255, 0.20);
+
+        &:before {
+            content: var(--svg-x-white);
+        }
+    }
+
+    &--continue {
+        color: #2B4A76;
+        border: 1.197px solid $white;
+        background: $white;
+
+        &:before {
+            content: var(--svg-heart-black);
+        }
+    }
+
+    &--primary {
+        color: $white;
+        border: 1.5px solid $white;
+        background-color: transparent;
+
+        @include on-event {
+            opacity: 0.8;
+            
+        }
+        &:disabled{
+            opacity: .7;
+        }
+    }
+
+    &--secondary {
+        background: rgba(255, 255, 255, 0.08);
+        
+
+        @include on-event {
+            opacity: 0.8;
+        }
+    }
+}

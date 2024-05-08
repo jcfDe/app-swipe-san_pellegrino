@@ -1,0 +1,85 @@
+$svg-icons:(
+x-red:'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none"><path d="M3.68262 4.03809L8.14549 8.50095M12.6084 12.9638L8.14549 8.50095M8.14549 8.50095L12.6084 4.03809L3.68262 12.9638" stroke="#FF5E51" stroke-width="1.00511" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+x-black:'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none"><path d="M3.68262 4.03809L8.14549 8.50095M12.6084 12.9638L8.14549 8.50095M8.14549 8.50095L12.6084 4.03809L3.68262 12.9638" stroke="#131E2E" stroke-width="1.00511" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+x-white:'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none"><path d="M3.68262 4.03809L8.14549 8.50095M12.6084 12.9638L8.14549 8.50095M8.14549 8.50095L12.6084 4.03809L3.68262 12.9638" stroke="white" stroke-width="1.00511" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+heart-blue:'<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.64527 11.7644C6.77052 11.7644 6.94946 11.6842 7.08067 11.6096C10.4386 9.54508 12.5679 7.1422 12.5679 4.69917C12.5679 2.66905 11.1185 1.23535 9.24574 1.23535C8.12395 1.23535 7.25185 1.81154 6.70436 2.70149C6.67763 2.74495 6.6133 2.74474 6.5868 2.70113C6.04918 1.81647 5.16621 1.23535 4.04481 1.23535C2.172 1.23535 0.722656 2.66905 0.722656 4.69917C0.722656 7.1422 2.85194 9.54508 6.21584 11.6096C6.34109 11.6842 6.52002 11.7644 6.64527 11.7644Z" fill="#2B4A76" stroke="#2B4A76" stroke-width="0.658069" stroke-linecap="round"/></svg>',
+heart-black:'<svg xmlns="http://www.w3.org/2000/svg" width="13" height="12" viewBox="0 0 13 12" fill="none"><path d="M6.13746 11.2644C6.26271 11.2644 6.44164 11.1842 6.57286 11.1096C9.9308 9.04508 12.0601 6.6422 12.0601 4.19917C12.0601 2.16905 10.6107 0.735352 8.73792 0.735352C7.61613 0.735352 6.74403 1.31154 6.19655 2.20149C6.16981 2.24495 6.10549 2.24474 6.07899 2.20113C5.54137 1.31647 4.6584 0.735352 3.537 0.735352C1.66419 0.735352 0.214844 2.16905 0.214844 4.19917C0.214844 6.6422 2.34412 9.04508 5.70803 11.1096C5.83328 11.1842 6.01221 11.2644 6.13746 11.2644Z" fill="#1B2E4A"/></svg>',
+);
+
+/**
+* Characters to escape from SVGs
+* Source: https://github.com/Threespot/frontline-sass/blob/master/src/variables/_escape-chars.scss
+*/
+$fs-escape-chars: (
+  " ": "%20",
+  "'": "%22",
+  '"': "%27",
+  "#": "%23",
+  "/": "%2F",
+  ":": "%3A",
+  "(": "%28",
+  ")": "%29",
+  "%": "%25",
+  "<": "%3C",
+  ">": "%3E",
+  "\\":"%5C",
+  "^": "%5E",
+  "{": "%7B",
+  "|": "%7C",
+  "}": "%7D",
+);
+
+/**
+ * Helper to get URL-escaped inline SVG code
+ */
+@function svg($name) {
+  // Check if icon exists
+  @if not map-has-key($svg-icons, $name) {
+    @error 'icon “#{$name}” does not exists in $svg-icons map';
+    @return false;
+  }
+
+  // Get icon data
+  $icon-map: map-get($svg-icons, $name);
+
+  $escaped-string: "";
+  $unquote-icon: unquote($icon-map);
+  // Loop through each character in string
+  @for $i from 1 through str-length($unquote-icon) {
+    $char: str-slice($unquote-icon, $i, $i);
+
+    // Check if character is in symbol map
+    $char-lookup: map-get($fs-escape-chars, $char);
+
+    // If it is, use escaped version
+    @if $char-lookup != null {
+      $char: $char-lookup;
+    }
+
+    // Append character to escaped string
+    $escaped-string: $escaped-string + $char;
+  }
+
+  // Return inline SVG data
+  @return url("data:image/svg+xml, #{$escaped-string} ");
+}
+
+:root{
+  @each $name, $code in $svg-icons {
+    --svg-#{$name}: #{svg($name)};
+  }
+}
+
+.masked{
+  display: block;
+  height: 120px;
+  width: 120px;
+  background-color: red;
+  mask-image: var(--svg-arrow-more);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: var(--svg-arrow-more);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+
+}
