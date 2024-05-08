@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="robots" content="noindex">
+  <title>Find your taste match</title>
+  <meta name="description" content="Discover your perfect culinary match, for every moment and every mood.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Lora:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!--<link rel="stylesheet" href="https://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.css">-->
+  <!--<script src="https://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>-->
+
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
+
+  <style>
+    input,
+    textarea {
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app-container">
+    <div class="page page-start">
+      <div class="logo">
+        <img src="./assets/img/logo.png" class="logo-img" />
+      </div>
+      <div class="text-container">
+        <h1 class="title">Discover our taste match experience!</h1>
+        <p class="text">Like it? Swipe right. Don’t? Swipe left.</p>
+      </div>
+      <div class="image">
+        <div class="lottieImage">
+        </div>
+      </div>
+      <div class="button-container">
+        <a href="javascript:void(0)" class="button button--primary button--start">START</a>
+      </div>
+    </div>
+
+    <div class="page page-form">
+      <div class="logo">
+        <img src="./assets/img/logo.png" class="logo-img" />
+      </div>
+      <div class="text-container">
+        <p class="text">But, before we start:</p>
+        <h2 class="title">Please fill in the information below.</h2>
+      </div>
+      <form id="form" class="form">
+        <div class="form-inputs">
+          <input type="text" class="input" id="firstname" placeholder="First name">
+          <input type="text" class="input" id="lastname" placeholder="Last name">
+        </div>
+        <div class="button-container">
+          <input type="submit" value="NEXT" class="button button--primary button--next" disabled />
+        </div>
+      </form>
+    </div>
+
+    <div class="page page-cards">
+      <a href="javascript:void(0)" class="button button--finish" onclick="showfinish()"><span class="button--finish-text">FINISH SWIPING</span></a>
+      <div class="image-container">
+        <div class="demo__card-cont">
+          <!-- Generar Cards con JS-->
+        </div>
+      </div>
+      <p class="small-text">Swipe left or right to choose</p>
+      <div class="button-container">
+        <a href="javascript:void(0)" class="button button--not"><span class="button--not-text">NOT FOR ME</span></a>
+        <a href="javascript:void(0)" class="button button--yes"><span class="button--yes-text">COUNT ME IN</span></a>
+      </div>
+      <div class="modal">
+        <div class="text-container">
+          <p class="small">your answers have been submitted</p>
+          <h2 class="title title-white">Do you want to keep swiping?</h2>
+        </div>
+        <div class="button-container">
+          <a href="javascript:void(0)" class="button button--modal_finish" onclick="showfinish()"><span class="button--modal_finish-text">FINISH</span></a>
+          <a href="javascript:void(0)" class="button button--continue" onclick="hidemodal()"><span class="button--continue-text">CONTINUE</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="page page-end">
+      <div class="logo">
+        <img src="./assets/img/logo.png" class="logo-img" />
+      </div>
+      <div class="text-container">
+        <h2 class="big-title">Thank you <span class="name-container">[name]</span>!</h2>
+        <p class="text">We hope you have enjoyed this first glimpse we have prepared just for you.<br>We are very excited for what’s coming on Sanpellegrino’s IBU Council.<br>Stay tuned for the upcoming surprise!</p>
+      </div>
+      <div class="images-container">
+        <div class="image-final image-final--1">
+          <img src="./assets/img/final-1.png"></img>
+        </div>
+        <div class="image-final image-final--2">
+          <img src="./assets/img/final-2.png"></img>
+        </div>
+      </div>
+    </div>
+    <!-- <button class="button" type="submit" onclick="showmodal()" style="position: fixed; left: 20px; bottom: 20px; width: 100px; ">Open modal</button>-->
+  </div>
+
+  <script src="./assets/js/main.js"></script>
+</body>
+
+</html>
